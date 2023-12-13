@@ -1,4 +1,4 @@
-name: backend-build
+name: backend_build
 on:
   push:
     branches:
