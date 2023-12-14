@@ -1,4 +1,4 @@
-package codecracker.backend.Model;
+package codecracker.backend.Movie.Model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -22,10 +22,10 @@ public class Movie {
     }
 
 
-    
+
 }
 
-        
+
 
 
 
