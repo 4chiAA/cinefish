@@ -2,8 +2,6 @@ package codecracker.backend.Movie.Model;
 
 import org.bson.io.BsonOutput;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Bean;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -25,18 +23,16 @@ public class MovieController {
     @GetMapping("/popular")
     public List<Movie> getPopularMovies() {
 
-        Movie popularMovie = Objects.requireNonNull(
-                        WebClient.builder()
-                                .baseUrl("https://api.themoviedb.org/3/")
-                                .defaultHeader("Authorization", "Bearer " + tmdbApiKey)
-                                .build()
-                                .get()
-                                .uri("/movie/popular")
-                                .retrieve()
-                                .toEntity(Movie.class)
-                                .block())
-                .getBody();
-        return popularMovie;
+        MovieResponse popularMovie = Objects.requireNonNull(
+                webClient
+                        .get()
+                        .uri("/movie/popular")
+                        .retrieve()
+                        .toEntity(MovieResponse.class)
+                        .block())
+                        .getBody();
+
+        return popularMovie.getResults();
     }
 
 }
