@@ -10,30 +10,20 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 
+import java.util.List;
 import java.util.Objects;
 
 @RestController
 @RequestMapping("/movies")
+
 public class MovieController {
 
-
-    // private WebClient webClient;
-
-    @Value("${tmdb}")
-    private String tmdbApiKey;
-
-
-    /*@Bean
-    public WebClient webClient() {
-        return WebClient.builder()
-                .baseUrl("https://api.themoviedb.org/3/")
-                .defaultHeader("Authorization: ", "Bearer " + tmdbApiKey)
-                .build();
-    }*/
+    @Autowired
+    private WebClient webClient;
 
 
     @GetMapping("/popular")
-    public Movie getPopularMovies() {
+    public List<Movie> getPopularMovies() {
 
         Movie popularMovie = Objects.requireNonNull(
                         WebClient.builder()
@@ -53,28 +43,5 @@ public class MovieController {
 
 
 
-/*@RestController
-@RequestMapping("/movies")
-public class MovieController {
 
-    @Value("${tmdb}")
-    private String tmdbApiKey;
-
-    private final WebClient webClient;
-
-    public MovieController(WebClient.Builder webClientBuilder) {
-        this.webClient = webClientBuilder
-                .baseUrl("https://api.themoviedb.org/3/")
-                .defaultHeader("Authorization", "Bearer " + tmdbApiKey)
-                .build();
-    }
-
-    @GetMapping("/popular")
-    public Mono<Movie> getPopularMovies() {
-        return webClient.get()
-                .uri("/movie/popular")
-                .retrieve()
-                .bodyToMono(Movie.class);
-    }
-}*/
 
