@@ -12,7 +12,7 @@ export default function PopularMovies(props: popularMoviesProps) {
 
     return (
         <StyledSection>
-            {props.movies.map((movie: Movie) => (
+            {props.movies.slice(0,4).map((movie: Movie) => (
                 <StyledArticle key={movie.id}>
                     <img src={posterImageUrl + movie.poster_path} alt={"Poster of " + movie.title}/>
                     {movie.title}
