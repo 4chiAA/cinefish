@@ -35,6 +35,22 @@ public class MovieController {
         return popularMovie.getResults();
     }
 
+    @GetMapping("/newcomer")
+    public List<Movie> getNewcomerMovies(){
+
+        MovieResponse newcomerMovie = Objects.requireNonNull(
+
+                webClient
+                        .get()
+                        .uri("/movie/now_playing")
+                        .retrieve()
+                        .toEntity(MovieResponse.class)
+                        .block())
+                        .getBody();
+
+                return newcomerMovie.getResults();
+    }
+
 }
 
 
