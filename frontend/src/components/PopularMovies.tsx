@@ -11,6 +11,8 @@ export default function PopularMovies(props: popularMoviesProps) {
 
 
     return (
+        <>
+        <h1>Popular Movies</h1>
         <StyledSection>
             {props.movies.slice(0,4).map((movie: Movie) => (
                 <StyledArticle key={movie.id}>
@@ -19,12 +21,14 @@ export default function PopularMovies(props: popularMoviesProps) {
                 </StyledArticle>
             ))}
         </StyledSection>
+        </>
     )
 }
 
 const StyledSection = styled.section`
   display: flex;
   gap: 20px;
+  justify-content: flex-start;
 `
 
 const StyledArticle = styled.article`
