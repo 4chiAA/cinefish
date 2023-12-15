@@ -5,6 +5,7 @@ import {Movie} from "./Movie.ts";
 import Home from "./components/Home.tsx";
 import {Route, Routes} from "react-router-dom";
 
+
 export default function App() {
 
     const baseURL: string = "/movies/popular"
@@ -23,10 +24,9 @@ export default function App() {
     }
 
     return (
-        <>
-            <Routes>
-                <Route path={"/home"} element={<Home movies={popularMovies}/>}/>
-            </Routes>
-        </>
+        <Routes>
+            <Route path={"/home"} element={<Home movies={popularMovies}/>}/>
+        </Routes>
     )
 }
+

@@ -1,23 +1,37 @@
 import {Movie} from "../Movie.ts";
+import styled from "styled-components"
 
 type popularMoviesProps = {
-   movies: Movie[]
+    movies: Movie[]
 }
 
 export default function PopularMovies(props: popularMoviesProps) {
 
-   const posterImageUrl:string = "https://image.tmdb.org/t/p/w440_and_h660_face"
+    const posterImageUrl: string = "https://image.tmdb.org/t/p/w440_and_h660_face"
 
 
-   return (
-       <>
-           {props.movies.map((movie: Movie) => (
-               <p key={movie.id}>
-                   <img src={posterImageUrl + movie.poster_path} alt={"Poster of " + movie.title}/>
-                   {movie.title}
-               </p>
-           ))}
-
-       </>
-   )
+    return (
+        <>
+        <h1>Popular Movies</h1>
+        <StyledSection>
+            {props.movies.slice(0,4).map((movie: Movie) => (
+                <StyledArticle key={movie.id}>
+                    <img src={posterImageUrl + movie.poster_path} alt={"Poster of " + movie.title}/>
+                    {movie.title}
+                </StyledArticle>
+            ))}
+        </StyledSection>
+        </>
+    )
 }
+
+const StyledSection = styled.section`
+  display: flex;
+  gap: 20px;
+  justify-content: flex-start;
+`
+
+const StyledArticle = styled.article`
+  display: flex;
+  flex-direction: column;
+`;
