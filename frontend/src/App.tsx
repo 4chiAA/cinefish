@@ -23,10 +23,8 @@ export default function App() {
     }
 
     return (
-        <>
-            <Routes>
-                <Route path={"/home"} element={<Home movies={popularMovies}/>}/>
-            </Routes>
-        </>
+        <Routes>
+            <Route path={"/home"} element={<Home movies={popularMovies}/>}/>
+        </Routes>
     )
 }
