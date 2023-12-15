@@ -1,15 +1,19 @@
-import PopularMovies from "./PopularMovies.tsx"
+import MoviesPreview from "./MoviesPreview.tsx"
 import {Movie} from "../Movie.ts";
 
-type PopularMoviesProps = {
-    movies: Movie[]
+type MoviesPreviewProps= {
+    moviesPopular: Movie[]
+    moviesNewcomer: Movie[]
 }
 
-export default function Home(props:PopularMoviesProps) {
+
+
+export default function Home(props:MoviesPreviewProps) {
 
 return(
     <>
-    <PopularMovies movies={props.movies}/>
+    <MoviesPreview movies={props.moviesPopular} title={"Popular Movies"}/>
+    <MoviesPreview movies={props.moviesNewcomer} title={"Newcomer Movies"}/>
     </>
 
 )

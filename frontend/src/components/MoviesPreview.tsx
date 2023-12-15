@@ -1,18 +1,21 @@
 import {Movie} from "../Movie.ts";
 import styled from "styled-components"
 
-type popularMoviesProps = {
+type MoviesPreviewProps= {
     movies: Movie[]
+    title: string
 }
 
-export default function PopularMovies(props: popularMoviesProps) {
+
+
+export default function MoviesPreview(props: MoviesPreviewProps) {
 
     const posterImageUrl: string = "https://image.tmdb.org/t/p/w440_and_h660_face"
 
 
     return (
         <>
-        <h1>Popular Movies</h1>
+        <h1>{props.title}</h1>
         <StyledSection>
             {props.movies.slice(0,4).map((movie: Movie) => (
                 <StyledArticle key={movie.id}>
