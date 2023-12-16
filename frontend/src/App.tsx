@@ -5,6 +5,7 @@ import {Movie} from "./Movie.ts";
 import Home from "./pages/Home.tsx";
 import {Route, Routes} from "react-router-dom";
 import Newcomer from "./pages/Newcomer.tsx";
+import Popular from "./pages/Popular.tsx";
 
 
 export default function App() {
@@ -40,6 +41,7 @@ export default function App() {
         <Routes>
             <Route path={"/home"} element={<Home moviesPopular={popularMovies} moviesNewcomer={newcomerMovies}/>}/>
             <Route path={"/newcomer"} element={<Newcomer newcomerMovies={newcomerMovies} />}/>
+            <Route path={"/popular"} element={<Popular popularMovies={popularMovies} />}/>
         </Routes>
     )
 }
