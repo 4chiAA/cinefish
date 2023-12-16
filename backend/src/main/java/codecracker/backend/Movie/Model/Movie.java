@@ -21,6 +21,11 @@ public class Movie {
         this.poster_path = poster_path;
     }
 
+    public Movie(String original_title, String poster_path, String overview) {
+        this.original_title = original_title;
+        this.poster_path = poster_path;
+        this.overview = overview;
+    }
 
 
 }
