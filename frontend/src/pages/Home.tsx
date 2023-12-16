@@ -1,7 +1,7 @@
 import MoviesPreview from "../components/MoviesPreview.tsx"
 import {Movie} from "../Movie.ts";
 
-type MoviesPreviewProps= {
+type MoviesPreviewProps = {
     moviesPopular: Movie[]
     moviesNewcomer: Movie[]
 }

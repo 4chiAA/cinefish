@@ -4,6 +4,7 @@ import {useEffect, useState} from "react";
 import {Movie} from "./Movie.ts";
 import Home from "./pages/Home.tsx";
 import {Route, Routes} from "react-router-dom";
+import Newcomer from "./pages/Newcomer.tsx";
 
 
 export default function App() {
@@ -38,6 +39,7 @@ export default function App() {
     return (
         <Routes>
             <Route path={"/home"} element={<Home moviesPopular={popularMovies} moviesNewcomer={newcomerMovies}/>}/>
+            <Route path={"/newcomer"} element={<Newcomer newcomerMovies={newcomerMovies} />}/>
         </Routes>
     )
 }
