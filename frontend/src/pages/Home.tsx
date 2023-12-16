@@ -12,8 +12,8 @@ export default function Home(props:MoviesPreviewProps) {
 
 return(
     <>
-    <MoviesPreview movies={props.moviesPopular} title={"Popular Movies"}/>
-    <MoviesPreview movies={props.moviesNewcomer} title={"Newcomer Movies"}/>
+    <MoviesPreview movies={props.moviesPopular} title={"Popular"}/>
+    <MoviesPreview movies={props.moviesNewcomer} title={"Newcomer"}/>
     </>
 
 )

@@ -1,5 +1,6 @@
 import {Movie} from "../Movie.ts";
 import styled from "styled-components"
+import {Link} from "react-router-dom";
 
 type MoviesPreviewProps = {
     movies: Movie[]
@@ -15,7 +16,7 @@ export default function MoviesPreview(props: MoviesPreviewProps) {
 
     return (
         <>
-        <h1>{props.title}</h1>
+            <h1><Link to={"/" + props.title.toLowerCase()}>{props.title}</Link></h1>
         <StyledSection>
             {props.movies.slice(0,4).map((movie: Movie) => (
                 <StyledArticle key={movie.id}>
