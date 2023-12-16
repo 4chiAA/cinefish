@@ -1,4 +1,5 @@
 import {Movie} from "../Movie.ts";
+import styled from "styled-components";
 
 type MovieListProps = {
     movies: Movie[]
@@ -12,15 +13,27 @@ export default function MovieList(props: MovieListProps) {
     return (
         <>
             <h1>{props.title}</h1>
-            <section>
+            <StyledContainerSection>
                 {props.movies.map((movie: Movie) => (
-                    <article key={movie.id}><img src={posterImageUrl + movie.poster_path}
-                                                 alt={"Poster of " + movie.title}/>
-                        {movie.title}
-                        {movie.overview}
-                    </article>
+                    <StyledArticle key={movie.id}><img src={posterImageUrl + movie.poster_path}
+                                                       alt={"Poster of " + movie.title}/>
+                        <section>
+                            <p>{movie.title}</p>
+                            <p>{movie.overview}</p>
+                        </section>
+                    </StyledArticle>
                 ))}
-            </section>
+            </StyledContainerSection>
         </>
     )
 }
+
+const StyledContainerSection = styled.section`
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+`
+
+const StyledArticle = styled.article`
+  display: flex;
+`
