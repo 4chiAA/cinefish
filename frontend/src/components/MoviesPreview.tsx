@@ -1,7 +1,7 @@
 import {Movie} from "../Movie.ts";
 import styled from "styled-components"
 
-type MoviesPreviewProps= {
+type MoviesPreviewProps = {
     movies: Movie[]
     title: string
 }
