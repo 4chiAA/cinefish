@@ -1,4 +1,4 @@
-import MoviesPreview from "./MoviesPreview.tsx"
+import MoviesPreview from "../components/MoviesPreview.tsx"
 import {Movie} from "../Movie.ts";
 
 type MoviesPreviewProps= {
