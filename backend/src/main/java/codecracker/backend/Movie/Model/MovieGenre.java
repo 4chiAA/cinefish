@@ -8,18 +8,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 
-public class Movie {
+public class MovieGenre {
     private int id;
-    private String original_title;
-    private String overview;
-    private String poster_path;
-    private String release_date;
-    private String title;
+    String name;
 }
-
-
-
-
-
-
-
