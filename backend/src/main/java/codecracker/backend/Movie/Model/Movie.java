@@ -17,6 +17,7 @@ public class Movie {
     private String poster_path;
     private String release_date;
     private List<MovieGenre> genres;
+    private int runtime;
 }
 
 
