@@ -16,9 +16,9 @@ export default function MovieList(props: MovieListProps) {
             <StyledContainerSection>
                 {props.movies.map((movie: Movie) => (
                     <StyledArticle key={movie.id}><img src={posterImageUrl + movie.poster_path}
-                                                       alt={"Poster of " + movie.title}/>
+                                                       alt={"Poster of " + movie.original_title}/>
                         <section>
-                            <p>{movie.title}</p>
+                            <p>{movie.original_title}</p>
                             <p>{movie.overview}</p>
                         </section>
                     </StyledArticle>

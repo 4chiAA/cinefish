@@ -19,8 +19,8 @@ export default function MoviesPreview(props: MoviesPreviewProps) {
             <StyledSection>
                 {props.movies.slice(0, 4).map((movie: Movie) => (
                     <StyledArticle key={movie.id}>
-                        <img src={posterImageUrl + movie.poster_path} alt={"Poster of " + movie.title}/>
-                        {movie.title}
+                        <img src={posterImageUrl + movie.poster_path} alt={"Poster of " + movie.original_title}/>
+                        {movie.original_title}
                     </StyledArticle>
                 ))}
             </StyledSection>
