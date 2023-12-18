@@ -13,6 +13,7 @@ export default function App() {
 
     const [popularMovies, setPopularMovies] = useState<Movie[]>([])
     const [newcomerMovies, setNewcomerMovies] = useState<Movie[]>([])
+    const [movieDetails, setMovieDetails] = useState<Movie>()
 
     useEffect(() => {
         fetchDataPopular()
@@ -35,14 +36,22 @@ export default function App() {
             })
     }
 
+    const fetchDataDetailPage = (id:number) => {
+        axios.get("movies/"+id)
+            .then
+    }
+
 
 
     return (
+        <>
+        <p>Hallo</p>
         <Routes>
             <Route path={"/home"} element={<Home moviesPopular={popularMovies} moviesNewcomer={newcomerMovies}/>}/>
             <Route path={"/newcomer"} element={<Newcomer newcomerMovies={newcomerMovies} />}/>
             <Route path={"/popular"} element={<Popular popularMovies={popularMovies} />}/>
         </Routes>
+        </>
     )
 }
 
