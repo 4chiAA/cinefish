@@ -6,8 +6,6 @@ type MoviesPreviewProps = {
     moviesNewcomer: Movie[]
 }
 
-
-
 export default function Home(props:MoviesPreviewProps) {
 
 return(
