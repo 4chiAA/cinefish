@@ -19,6 +19,7 @@ export default function App() {
     useEffect(() => {
         fetchDataPopular()
         fetchDataNewcomer()
+        fetchDataDetailPage(3)
     }, []);
 
     const fetchDataPopular = () => {

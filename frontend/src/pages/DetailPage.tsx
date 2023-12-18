@@ -1,4 +1,4 @@
-import {MovieDetail} from "../Movie.ts";
+import {Genre, MovieDetail} from "../Movie.ts";
 
 type DetailPageProps = {
     movieDetails: MovieDetail
@@ -10,13 +10,25 @@ export default function DetailPage(props: DetailPageProps) {
 
     return (
         <>
-            <img src={posterImageUrl+props.movieDetails.poster_path} alt={"Poster of " + props.movieDetails.original_title}/>
-            <p>{props.movieDetails.original_title}</p>
+            <section>
+                <img src={posterImageUrl + props.movieDetails.poster_path}
+                     alt={"Poster of " + props.movieDetails.original_title}/>
+                <p>{props.movieDetails.original_title}</p>
+                {props.movieDetails.genres?.map((genre: Genre) => (
+                    <p key={genre.id}>{genre.name}</p>
+
+                ))}
+
+                <p>{props.movieDetails.runtime}</p>
+                <p>{props.movieDetails.release_date}</p>
+                <p>{props.movieDetails.vote_average}</p>
+            </section>
+
             <p>{props.movieDetails.overview}</p>
-            <p>{props.movieDetails.runtime}</p>
-            <p>{props.movieDetails.release_date}</p>
-            <p>{props.movieDetails.vote_average}</p>
-            <p></p>
+
         </>
     )
 }
+
+//const StyleComponent
+
