@@ -3,6 +3,7 @@ package codecracker.backend.Movie.Model;
 import org.bson.io.BsonOutput;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -49,6 +50,22 @@ public class MovieController {
                         .getBody();
 
                 return newcomerMovie.getResults();
+    }
+
+    @GetMapping("/{id}")
+    public MovieDetail getMovieById(@PathVariable int id) {
+
+        MovieDetail movieDetails = Objects.requireNonNull(
+
+                        webClient
+                                .get()
+                                .uri("/movie/" + id)
+                                .retrieve()
+                                .toEntity(MovieDetail.class)
+                                .block())
+                .getBody();
+
+        return movieDetails;
     }
 
 }
