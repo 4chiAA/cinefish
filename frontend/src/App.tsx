@@ -8,7 +8,6 @@ import Newcomer from "./pages/Newcomer.tsx";
 import Popular from "./pages/Popular.tsx";
 import DetailPage from "./pages/DetailPage.tsx";
 
-
 export default function App() {
 
 
@@ -46,10 +45,9 @@ export default function App() {
             })
     }
 
-
-
     return (
         <>
+
         <Routes>
             <Route path={"/home"} element={<Home moviesPopular={popularMovies} moviesNewcomer={newcomerMovies}/>}/>
             <Route path={"/newcomer"} element={<Newcomer newcomerMovies={newcomerMovies} />}/>
