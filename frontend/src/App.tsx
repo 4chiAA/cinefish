@@ -6,6 +6,7 @@ import Home from "./pages/Home.tsx";
 import {Route, Routes} from "react-router-dom";
 import Newcomer from "./pages/Newcomer.tsx";
 import Popular from "./pages/Popular.tsx";
+import DetailPage from "./pages/DetailPage.tsx";
 
 
 export default function App() {
@@ -13,12 +14,11 @@ export default function App() {
 
     const [popularMovies, setPopularMovies] = useState<Movie[]>([])
     const [newcomerMovies, setNewcomerMovies] = useState<Movie[]>([])
-    const [movieDetail, setMovieDetail] = useState<MovieDetail>()
+    const [movieDetails, setMovieDetails] = useState<MovieDetail>(Object)
 
     useEffect(() => {
         fetchDataPopular()
         fetchDataNewcomer()
-        fetchDataDetailPage()
     }, []);
 
     const fetchDataPopular = () => {
@@ -39,11 +39,10 @@ export default function App() {
 
     const fetchDataDetailPage = (id:number) => {
         axios.get("movies/"+id)
-            .then(response => setMovieDetail(response.data))
+            .then(response => setMovieDetails(response.data))
             .catch(error => {
                 console.error("error information: ", error)
             })
-
     }
 
 
@@ -54,8 +53,8 @@ export default function App() {
             <Route path={"/home"} element={<Home moviesPopular={popularMovies} moviesNewcomer={newcomerMovies}/>}/>
             <Route path={"/newcomer"} element={<Newcomer newcomerMovies={newcomerMovies} />}/>
             <Route path={"/popular"} element={<Popular popularMovies={popularMovies} />}/>
-
         </Routes>
+            <DetailPage movieDetails={movieDetails}/>
         </>
     )
 }
