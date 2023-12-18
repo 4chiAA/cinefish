@@ -53,15 +53,15 @@ public class MovieController {
     }
 
     @GetMapping("/{id}")
-    public Movie getMovieById(@PathVariable int id) {
+    public MovieDetail getMovieById(@PathVariable int id) {
 
-        Movie movieDetails = Objects.requireNonNull(
+        MovieDetail movieDetails = Objects.requireNonNull(
 
                         webClient
                                 .get()
                                 .uri("/movie/" + id)
                                 .retrieve()
-                                .toEntity(Movie.class)
+                                .toEntity(MovieDetail.class)
                                 .block())
                 .getBody();
 
