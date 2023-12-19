@@ -6,7 +6,14 @@ type DetailPageProps = {
 
 export default function DetailPage(props: DetailPageProps) {
 
+
     const posterImageUrl: string = "https://image.tmdb.org/t/p/w440_and_h660_face"
+
+    if (props.movieDetails === undefined) {
+        return ("loading...");
+    } else if (props.movieDetails === null) {
+        return ("error")
+    }
 
     return (
         <>
@@ -16,7 +23,6 @@ export default function DetailPage(props: DetailPageProps) {
                 <p>{props.movieDetails.original_title}</p>
                 {props.movieDetails.genres?.map((genre: Genre) => (
                     <p key={genre.id}>{genre.name}</p>
-
                 ))}
 
                 <p>{props.movieDetails.runtime}</p>
@@ -29,6 +35,3 @@ export default function DetailPage(props: DetailPageProps) {
         </>
     )
 }
-
-//const StyleComponent
-
