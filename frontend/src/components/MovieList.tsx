@@ -10,6 +10,10 @@ export default function MovieList(props: MovieListProps) {
 
     const posterImageUrl: string = "https://image.tmdb.org/t/p/w440_and_h660_face"
 
+    if (props.movies.length === 0) {
+        return ("loading...")
+    }
+
     return (
         <>
             <h1>{props.title}</h1>
