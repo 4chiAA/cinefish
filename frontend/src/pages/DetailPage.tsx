@@ -1,11 +1,10 @@
 import {Genre, MovieDetail} from "../Movie.ts";
 
 type DetailPageProps = {
-    movieDetails: MovieDetail
+    movieDetails: MovieDetail | undefined | null
 }
 
 export default function DetailPage(props: DetailPageProps) {
-
 
     const posterImageUrl: string = "https://image.tmdb.org/t/p/w440_and_h660_face"
 
