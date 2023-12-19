@@ -2,10 +2,7 @@ package codecracker.backend.Movie.Model;
 
 import org.bson.io.BsonOutput;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 
@@ -67,6 +64,8 @@ public class MovieController {
 
         return movieDetails;
     }
+
+
 
 
 }
