@@ -13,7 +13,7 @@ import java.util.List;
 public class MovieDetail {
 
     private int id;
-    private String original_title;
+    private String title;
     private String overview;
     private String poster_path;
     private String release_date;

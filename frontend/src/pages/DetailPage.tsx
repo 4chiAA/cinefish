@@ -20,10 +20,10 @@ export default function DetailPage(props: DetailPageProps) {
             <StyledContainerSection>
                 <StyledImageWrapper>
                     <StyledImage src={posterImageUrl + props.movieDetails.poster_path}
-                                 alt={"Poster of " + props.movieDetails.original_title}/>
+                                 alt={"Poster of " + props.movieDetails.title}/>
                 </StyledImageWrapper>
                 <StyledInfoTitleSection>
-                    <StyledTitleParagraph>{props.movieDetails.original_title}</StyledTitleParagraph>
+                    <StyledTitleParagraph>{props.movieDetails.title}</StyledTitleParagraph>
                     <StyledInfoSection>
                         <p>Genre</p>
                         <ul>

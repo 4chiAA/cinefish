@@ -5,11 +5,10 @@ type MovieListProps = {
     newcomerMovies: Movie[]
 }
 
-export default function Newcomer(props:MovieListProps) {
+export default function Newcomer(props: MovieListProps) {
     return (
         <>
-        <MovieList movies={props.newcomerMovies} title={"Newcomer"}/>
-
+            <MovieList movies={props.newcomerMovies} title={"Newcomer"}/>
         </>
     )
 }
