@@ -13,7 +13,7 @@ export default function App() {
 
     const [popularMovies, setPopularMovies] = useState<Movie[]>([])
     const [newcomerMovies, setNewcomerMovies] = useState<Movie[]>([])
-    const [movieDetails, setMovieDetails] = useState<MovieDetail>(Object)
+    const [movieDetails, setMovieDetails] = useState<MovieDetail | undefined | null>(undefined)
 
     useEffect(() => {
         fetchDataPopular()
