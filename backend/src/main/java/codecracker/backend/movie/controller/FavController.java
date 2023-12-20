@@ -1,7 +1,7 @@
-package codecracker.backend.Movie.Controller;
+package codecracker.backend.movie.controller;
 
-import codecracker.backend.Movie.Service.FavService;
-import codecracker.backend.Movie.Model.MovieId;
+import codecracker.backend.movie.service.FavService;
+import codecracker.backend.movie.model.MovieId;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

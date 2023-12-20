@@ -1,7 +1,7 @@
-package codecracker.backend.Movie.Service;
+package codecracker.backend.movie.service;
 
-import codecracker.backend.Movie.Repo.FavRepo;
-import codecracker.backend.Movie.Model.MovieId;
+import codecracker.backend.movie.repo.FavRepo;
+import codecracker.backend.movie.model.MovieId;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

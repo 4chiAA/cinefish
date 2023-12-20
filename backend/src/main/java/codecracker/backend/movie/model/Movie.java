@@ -1,4 +1,4 @@
-package codecracker.backend.Movie.Model;
+package codecracker.backend.movie.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -8,7 +8,16 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 
-public class MovieGenre {
+public class Movie {
     private int id;
-    String name;
+    private String title;
+    private String overview;
+    private String poster_path;
 }
+
+
+
+
+
+
+

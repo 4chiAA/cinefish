@@ -1,13 +1,11 @@
-package codecracker.backend.Movie.Controller;
+package codecracker.backend.movie.controller;
 
-import codecracker.backend.Movie.Model.Movie;
-import codecracker.backend.Movie.Model.MovieDetail;
-import codecracker.backend.Movie.Model.MovieResponse;
-import org.bson.io.BsonOutput;
+import codecracker.backend.movie.model.Movie;
+import codecracker.backend.movie.model.MovieDetail;
+import codecracker.backend.movie.model.MovieResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.reactive.function.client.WebClient;
-import reactor.core.publisher.Mono;
 
 import java.util.List;
 import java.util.Objects;
