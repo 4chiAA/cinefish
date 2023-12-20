@@ -15,12 +15,17 @@ public class FavController {
     private final FavService service;
 
     @GetMapping
-    public List<MovieId> getFavouriteMovies(){
+    public List<MovieId> getFavouriteMovies() {
         return service.getFavouriteMovies();
     }
 
     @PostMapping
     public MovieId saveFavouriteMovie(@RequestBody MovieId favoriteMovie) {
         return service.saveFavouriteMovie(favoriteMovie);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteFavouriteMovie(@PathVariable int id) {
+        service.deleteFavouriteMovie(id);
     }
 }

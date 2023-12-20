@@ -20,4 +20,8 @@ public class FavService {
     public List<MovieId> getFavouriteMovies() {
         return repo.findAll();
     }
+
+    public void deleteFavouriteMovie(int id) {
+        repo.deleteById(id);
+    }
 }
