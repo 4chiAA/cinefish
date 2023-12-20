@@ -25,7 +25,7 @@ public class FavController {
     }
 
     @DeleteMapping("/{id}")
-    public void deleteFavouriteMovie(@PathVariable int id) {
+    public void deleteFavouriteMovie(@PathVariable String id) {
         service.deleteFavouriteMovie(id);
     }
 }

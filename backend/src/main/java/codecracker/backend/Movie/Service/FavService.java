@@ -21,7 +21,7 @@ public class FavService {
         return repo.findAll();
     }
 
-    public void deleteFavouriteMovie(int id) {
+    public void deleteFavouriteMovie(String id) {
         repo.deleteById(id);
     }
 }
