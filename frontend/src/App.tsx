@@ -11,22 +11,34 @@ import {MovieId} from "./MovieId.ts";
 
 export default function App() {
 
+    const [favMovieIds, setFavMovieIds] = useState<MovieId[]>([]);
+    const [favMovies, setFavMovies] = useState<Movie[]>([])
 
     const [popularMovies, setPopularMovies] = useState<Movie[]>([])
     const [newcomerMovies, setNewcomerMovies] = useState<Movie[]>([])
     const [movieDetails, setMovieDetails] = useState<MovieDetail | undefined | null>(undefined)
-    const [favouriteMovieList, setFavouriteMovieList] = useState<MovieId[]>([])
-    const [favouriteMovies, setFavouriteMovies] = useState<MovieDetail[]>([])
 
     useEffect(() => {
         fetchDataPopular()
         fetchDataNewcomer()
         fetchDataDetailPage(3)
-        fetchMovieId()
+        fetchMovieIds()
     }, []);
 
+    function fetchMovieIds(){
+        axios.get("/api/favourite")
+            .then(r => setFavMovieIds(r.data));
+    }
+
+    function fetFavMovies(){
+        favMovieIds.map(favMovie => {
+            axios.get("/api/movies/" + favMovie.movieId)
+                .then(r => setFavMovies([...favMovies, r.data]))
+        })
+    }
+
     const fetchDataPopular = () => {
-        axios.get("/movies/popular")
+        axios.get("/api/movies/popular")
             .then(response => setPopularMovies(response.data))
             .catch(error => {
                 console.error("error information: ", error)
@@ -34,7 +46,7 @@ export default function App() {
     }
 
     const fetchDataNewcomer = () => {
-        axios.get("/movies/newcomer")
+        axios.get("/api/movies/newcomer")
             .then(response => setNewcomerMovies(response.data))
             .catch(error => {
                 console.error("error information: ", error)
@@ -42,44 +54,26 @@ export default function App() {
     }
 
     const fetchDataDetailPage = (id: number) => {
-        axios.get("movies/" + id)
+        axios.get("/api/movies/" + id)
             .then(response => setMovieDetails(response.data))
             .catch(error => {
                 console.error("error information: ", error)
             })
     }
 
-    const fetchMovieId = () => {
-        axios.get("/favourite")
-            .then(response => setFavouriteMovieList(response.data))
-            .catch(error => {
-                console.error("error information: ", error)
-            })
-    }
+    console.log(favMovies);
 
-    /*function fetchFavouriteMovies() {*/
-        favouriteMovieList.map(id => {
-            axios.get("/movies/" + id.id)
-                .then(response => setFavouriteMovies([...favouriteMovies, response.data]))
-                .catch(error => {
-                    console.error("error information: ", error)
-                })
-        })
-
-    //}
-
-        console.log(favouriteMovies)
-        return (
-            <>
-<button>Get Fav Movies</button>
-                <Routes>
-                    <Route path={"/home"}
-                           element={<Home moviesPopular={popularMovies} moviesNewcomer={newcomerMovies}/>}/>
-                    <Route path={"/newcomer"} element={<Newcomer newcomerMovies={newcomerMovies}/>}/>
-                    <Route path={"/popular"} element={<Popular popularMovies={popularMovies}/>}/>
-                </Routes>
-                <DetailPage movieDetails={movieDetails}/>
-            </>
-        )
-    }
+    return (
+        <>
+            <button onClick={fetFavMovies}>Get Fav Movies</button>
+            <Routes>
+                <Route path={"/home"}
+                       element={<Home moviesPopular={popularMovies} moviesNewcomer={newcomerMovies}/>}/>
+                <Route path={"/newcomer"} element={<Newcomer newcomerMovies={newcomerMovies}/>}/>
+                <Route path={"/popular"} element={<Popular popularMovies={popularMovies}/>}/>
+            </Routes>
+            <DetailPage movieDetails={movieDetails}/>
+        </>
+    )
+}
 
