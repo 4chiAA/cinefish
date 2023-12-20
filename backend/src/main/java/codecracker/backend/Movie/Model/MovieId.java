@@ -9,4 +9,5 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class MovieId {
     private int id;
+    private String title;
 }

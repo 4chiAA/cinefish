@@ -1,7 +1,7 @@
 package codecracker.backend.Movie.Service;
 
 import codecracker.backend.Movie.Repo.FavRepo;
-import codecracker.backend.Movie.Model.MovieDetail;
+import codecracker.backend.Movie.Model.MovieId;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -11,7 +11,7 @@ public class FavService {
 
     private final FavRepo repo;
 
-    public MovieDetail saveFavouriteMovie(MovieDetail favouriteMovie) {
+    public MovieId saveFavouriteMovie(MovieId favouriteMovie) {
         return repo.save(favouriteMovie);
     }
 }
