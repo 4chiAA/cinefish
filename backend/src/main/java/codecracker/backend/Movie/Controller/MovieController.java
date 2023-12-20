@@ -1,8 +1,8 @@
-package codecracker.backend.movie.controller;
+package codecracker.backend.Movie.Controller;
 
-import codecracker.backend.movie.model.Movie;
-import codecracker.backend.movie.model.MovieDetail;
-import codecracker.backend.movie.model.MovieResponse;
+import codecracker.backend.Movie.Model.Movie;
+import codecracker.backend.Movie.Model.MovieDetail;
+import codecracker.backend.Movie.Model.MovieResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.reactive.function.client.WebClient;

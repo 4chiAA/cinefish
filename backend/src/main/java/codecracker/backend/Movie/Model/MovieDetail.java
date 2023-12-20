@@ -1,4 +1,4 @@
-package codecracker.backend.movie.model;
+package codecracker.backend.Movie.Model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -1,6 +1,6 @@
-package codecracker.backend.movie.repo;
+package codecracker.backend.Movie.Repo;
 
-import codecracker.backend.movie.model.MovieId;
+import codecracker.backend.Movie.Model.MovieId;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
