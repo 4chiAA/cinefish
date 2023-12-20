@@ -13,7 +13,7 @@ import java.util.Objects;
 @RestController
 @RequestMapping("/movies")
 
-public class MovieController {
+public class  MovieController {
 
     @Autowired
     private WebClient webClient;
