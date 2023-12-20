@@ -1,9 +1,9 @@
-package codecracker.backend.Movie.Model;
+package codecracker.backend.Movie.Service;
 
+import codecracker.backend.Movie.Repo.FavRepo;
+import codecracker.backend.Movie.Model.MovieDetail;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 @RequiredArgsConstructor

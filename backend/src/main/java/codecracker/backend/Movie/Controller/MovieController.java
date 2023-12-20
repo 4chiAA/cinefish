@@ -1,5 +1,8 @@
-package codecracker.backend.Movie.Model;
+package codecracker.backend.Movie.Controller;
 
+import codecracker.backend.Movie.Model.Movie;
+import codecracker.backend.Movie.Model.MovieDetail;
+import codecracker.backend.Movie.Model.MovieResponse;
 import org.bson.io.BsonOutput;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
