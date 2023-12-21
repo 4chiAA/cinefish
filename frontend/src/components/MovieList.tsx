@@ -18,18 +18,19 @@ export default function MovieList(props: MovieListProps) {
 
     return (
         <>
-            <h1>{props.title}</h1>
+            <StyledHeader>{props.title}</StyledHeader>
             <StyledContainerSection>
                 {props.movies.map((movie: Movie) => (
-                    <StyledArticle key={movie.id}>
-                        <Link to={"/" + movie.id}><img src={posterImageUrl + movie.poster_path}
-                                                       alt={"Poster of " + movie.title}/>
+                    <StyledArticle key={movie.id}><StyledImageWrapper>
+                        <Link to={"/" + movie.id}><StyledImage src={posterImageUrl + movie.poster_path}
+                                                               alt={"Poster of " + movie.title}/>
                         </Link>
-                        <section>
-                            <FavButton movie={movie}/>
-                            <Link to={"/" + movie.id}>{movie.title}</Link>
-                            <p>{movie.overview}</p>
-                        </section>
+                        <FavButton movie={movie}/>
+                    </StyledImageWrapper>
+                        <StyledInfoWrapper>
+                            <StyledLink to={"/" + movie.id}>{movie.title}</StyledLink>
+                            {movie.overview}
+                        </StyledInfoWrapper>
                     </StyledArticle>
                 ))}
             </StyledContainerSection>
@@ -37,12 +38,60 @@ export default function MovieList(props: MovieListProps) {
     )
 }
 
+const StyledHeader = styled.h1`
+  @media (min-width: 768px) {
+    margin: 0 40px 20px 40px;
+  }`
+
 const StyledContainerSection = styled.section`
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 40px;
+
+  @media (min-width: 768px) {
+    margin: 0 40px;
+  }
 `
 
 const StyledArticle = styled.article`
   display: flex;
+  flex-direction: column;
+  gap: 15px;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+  }
 `
+
+const StyledImageWrapper = styled.div`
+
+  @media (min-width: 768px) {
+    width: 15%;
+    flex-shrink: 0;
+  }
+`
+
+const StyledImage = styled.img`
+  width: 100%;
+  height: auto;
+  display: block;
+`
+
+const StyledInfoWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+`
+
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  font-size: 1.4em;
+
+  &:hover {
+    text-decoration: underline;
+  }
+`
+
+

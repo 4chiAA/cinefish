@@ -15,7 +15,7 @@ export default function MovieDetails(props: DetailProps) {
 
     useEffect(() => {
         props.fetchDataDetailPage(Number(id))
-    },[]);
+    }, []);
 
     const posterImageUrl: string = "https://image.tmdb.org/t/p/w440_and_h660_face"
 
@@ -27,70 +27,91 @@ export default function MovieDetails(props: DetailProps) {
 
     return (
         <>
+            <StyledHeader>{props.movieDetails.title}</StyledHeader>
+            <FavButton movieDetail={props.movieDetails}/>
+            <StyledContainerArticle>
 
-            <StyledContainerSection>
                 <StyledImageWrapper>
                     <StyledImage src={posterImageUrl + props.movieDetails.poster_path}
                                  alt={"Poster of " + props.movieDetails.title}/>
                 </StyledImageWrapper>
-                <StyledInfoTitleSection>
-                    <StyledTitleParagraph>{props.movieDetails.title}</StyledTitleParagraph>
+                <StyledInfoSectionMedia>
                     <StyledInfoSection>
-                        <p>Genre</p>
-                        <ul>
+                        <StyledList>
                             {props.movieDetails.genres?.map((genre: Genre) => (
-
-                                <li key={genre.id}>{genre.name}</li>
+                                <StyledListElement key={genre.id}>{genre.name}</StyledListElement>
                             ))}
-                        </ul>
-                        <div>
-                            <p>Runtime</p>
-                            <p>{props.movieDetails.runtime}</p>
-                            <p> Release Date</p>
-                            <p>{props.movieDetails.release_date}</p>
-                            <p>Score</p>
-                            <p>{props.movieDetails.vote_average}</p>
-                        </div>
+                        </StyledList>
+                        <StyledParagraph>
+                            <span>Runtime: {props.movieDetails.runtime}min</span>
+                            <span>Release Date: {props.movieDetails.release_date}</span>
+                            <span>Score: {props.movieDetails.vote_average}</span>
+                        </StyledParagraph>
                     </StyledInfoSection>
-                </StyledInfoTitleSection>
-            </StyledContainerSection>
-            <FavButton movieDetail={props.movieDetails}/>
-            <p>{props.movieDetails.overview}</p>
+                    <StyledDetailsParagraph>{props.movieDetails.overview}</StyledDetailsParagraph>
+                </StyledInfoSectionMedia>
+            </StyledContainerArticle>
         </>
     )
 }
 
-const StyledContainerSection = styled.section`
-  display: flex;
-  flex-direction: row;
-  margin: 10px;
-  height: 300px;
-`
-const StyledInfoSection = styled.section`
-  display: flex;
-  flex-direction: column;
-  max-height: 80%;
-  align-items: center;
-  font-size: 0.4em
-`
-const StyledTitleParagraph = styled.p`
-  display: flex;
-  text-align: center;
-`
-const StyledInfoTitleSection = styled.section`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 
+const StyledInfoSectionMedia = styled.section`
+  @media (min-width: 768px) {
+  }
 `
+
+const StyledContainerArticle = styled.article`
+  @media (min-width: 768px) {
+    //border: solid white;
+    display: flex;
+    gap: 40px;
+    padding: 0 40px;
+  }`
+
+const StyledHeader = styled.h1`
+  @media (min-width: 768px) {
+    margin: 0 40px 20px 40px;
+  }
+`
+
 const StyledImageWrapper = styled.div`
-  width: 50%;
-  overflow: hidden;
+  @media (min-width: 768px) {
+    width: 40%;
+    flex-shrink: 0;
+  }
 `
+
 const StyledImage = styled.img`
   width: 100%;
   height: auto;
   display: block;
-
 `
 
+const StyledInfoSection = styled.section`
+  width: 100%
+`
+
+const StyledList = styled.ul`
+  padding: 0;
+  display: flex;
+  gap: 20px;
+  font-weight: bold;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+`
+
+const StyledListElement = styled.li`
+  list-style: none;
+`
+
+const StyledParagraph = styled.p`
+  display: flex;
+  flex-direction: column;
+  font-size: 0.5em;
+  align-items: flex-end;
+`
+
+const StyledDetailsParagraph = styled.p`
+  text-align: justify;
+`
