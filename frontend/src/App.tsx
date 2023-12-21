@@ -8,9 +8,7 @@ import Newcomer from "./pages/Newcomer.tsx";
 import Popular from "./pages/Popular.tsx";
 import Favourite from "./pages/Favourite.tsx";
 import DetailPage from "./pages/DetailPage.tsx";
-import NavBar from "./components/Navbar.tsx";
 import Welcome from "./pages/Welcome.tsx";
-import MoviesPreview from "./components/MoviesPreview.tsx";
 
 
 export default function App() {
