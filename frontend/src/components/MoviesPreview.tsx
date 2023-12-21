@@ -16,12 +16,13 @@ export default function MoviesPreview(props: MoviesPreviewProps) {
 
     return (
         <>
-            <StyledTitleLink to={"/" + props.title.toLowerCase()}><h1>{props.title}</h1></StyledTitleLink>
+            <StyledHeader><StyledTitleLink to={"/" + props.title.toLowerCase()}>{props.title}</StyledTitleLink></StyledHeader>
             <StyledSection>
                 {props.movies.slice(0, 4).map((movie: Movie) => (
                     <StyledArticle key={movie.id}>
-                        <img src={posterImageUrl + movie.poster_path} alt={"Poster of " + movie.title}/>
-                        {movie.title}
+
+                        <StyledImage src={posterImageUrl + movie.poster_path} alt={"Poster of " + movie.title}/>
+                       <span>{movie.title}</span>
                     </StyledArticle>
                 ))}
             </StyledSection>
@@ -29,17 +30,41 @@ export default function MoviesPreview(props: MoviesPreviewProps) {
     )
 }
 
+const StyledHeader = styled.h1`
+  @media (min-width: 768px) {
+    margin: 0 40px 20px 40px;
+  }`
+
+const StyledTitleLink = styled(Link)`
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+
+  &:hover {
+    text-decoration: underline;
+  }
+`
+
 const StyledSection = styled.section`
   display: flex;
   gap: 20px;
-  justify-content: flex-start;
+  overflow-x: auto;
+  width: 150vw;
+
+  @media (min-width: 768px) {
+    padding: 0 40px;
+      }
+\`
 `
 
 const StyledArticle = styled.article`
   display: flex;
   flex-direction: column;
-`;
+  gap: 5px;
+  width: 100%;
+  font-weight: bold;
+  `;
 
-const StyledTitleLink = styled(Link)`
-  color: #fff;
-`;
+const StyledImage = styled.img`
+  width: 100%;
+`

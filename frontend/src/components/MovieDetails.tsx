@@ -63,7 +63,6 @@ const StyledInfoSectionMedia = styled.section`
 
 const StyledContainerArticle = styled.article`
   @media (min-width: 768px) {
-    //border: solid white;
     display: flex;
     gap: 40px;
     padding: 0 40px;
