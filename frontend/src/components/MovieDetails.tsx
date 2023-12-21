@@ -27,7 +27,7 @@ export default function MovieDetails(props: DetailProps) {
 
     return (
         <>
-            <FavButton movieDetail={props.movieDetails}/>
+
             <StyledContainerSection>
                 <StyledImageWrapper>
                     <StyledImage src={posterImageUrl + props.movieDetails.poster_path}
@@ -54,6 +54,7 @@ export default function MovieDetails(props: DetailProps) {
                     </StyledInfoSection>
                 </StyledInfoTitleSection>
             </StyledContainerSection>
+            <FavButton movieDetail={props.movieDetails}/>
             <p>{props.movieDetails.overview}</p>
         </>
     )
