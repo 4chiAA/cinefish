@@ -1,6 +1,7 @@
 import {Movie} from "../Movie.ts";
 import styled from "styled-components";
 import FavButton from "./FavButton.tsx";
+import {Link} from "react-router-dom";
 
 type MovieListProps = {
     movies: Movie[]
@@ -20,11 +21,13 @@ export default function MovieList(props: MovieListProps) {
             <h1>{props.title}</h1>
             <StyledContainerSection>
                 {props.movies.map((movie: Movie) => (
-                    <StyledArticle key={movie.id}><img src={posterImageUrl + movie.poster_path}
+                    <StyledArticle key={movie.id}>
+                        <Link to={"/" + movie.id}><img src={posterImageUrl + movie.poster_path}
                                                        alt={"Poster of " + movie.title}/>
+                        </Link>
                         <section>
                             <FavButton movie={movie}/>
-                            <p>{movie.title}</p>
+                            <Link to={"/" + movie.id}>{movie.title}</Link>
                             <p>{movie.overview}</p>
                         </section>
                     </StyledArticle>
