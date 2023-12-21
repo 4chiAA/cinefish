@@ -7,11 +7,9 @@ import {Route, Routes} from "react-router-dom";
 import Newcomer from "./pages/Newcomer.tsx";
 import Popular from "./pages/Popular.tsx";
 import DetailPage from "./pages/DetailPage.tsx";
-import {MovieId} from "./MovieId.ts";
 
 export default function App() {
 
-    const [favMovieIds, setFavMovieIds] = useState<MovieId[]>([]);
     const [favMovies, setFavMovies] = useState<Movie[]>([])
 
     const [popularMovies, setPopularMovies] = useState<Movie[]>([])
@@ -21,20 +19,11 @@ export default function App() {
     useEffect(() => {
         fetchDataPopular()
         fetchDataNewcomer()
-        fetchDataDetailPage(3)
-        fetchMovieIds()
     }, []);
 
-    function fetchMovieIds(){
-        axios.get("/api/favourite")
-            .then(r => setFavMovieIds(r.data));
-    }
-
-    function fetFavMovies(){
-        favMovieIds.map(favMovie => {
-            axios.get("/api/movies/" + favMovie.movieId)
-                .then(r => setFavMovies([...favMovies, r.data]))
-        })
+    function fetchFavMovies() {
+        axios.get("/api/movies/favourite")
+            .then(response => setFavMovies(response.data));
     }
 
     const fetchDataPopular = () => {
@@ -61,18 +50,16 @@ export default function App() {
             })
     }
 
-    console.log(favMovies);
 
     return (
         <>
-            <button onClick={fetFavMovies}>Get Fav Movies</button>
             <Routes>
-                <Route path={"/home"}
-                       element={<Home moviesPopular={popularMovies} moviesNewcomer={newcomerMovies}/>}/>
+                <Route path={"/home"} element={<Home moviesPopular={popularMovies} moviesNewcomer={newcomerMovies}/>}/>
                 <Route path={"/newcomer"} element={<Newcomer newcomerMovies={newcomerMovies}/>}/>
                 <Route path={"/popular"} element={<Popular popularMovies={popularMovies}/>}/>
+                <Route path={"/:id"} element={<DetailPage movieDetails={movieDetails} fetchDataDetailPage={fetchDataDetailPage}/>}/>
             </Routes>
-            <DetailPage movieDetails={movieDetails}/>
+            {/*<DetailPage movieDetails={movieDetails}/>*/}
         </>
     )
 }

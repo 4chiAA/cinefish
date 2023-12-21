@@ -1,11 +1,20 @@
 import {Genre, MovieDetail} from "../Movie.ts";
 import styled from "styled-components";
+import {useParams} from "react-router-dom";
+import {useEffect} from "react";
 
 type DetailPageProps = {
     movieDetails: MovieDetail | undefined | null
+    fetchDataDetailPage: (id: number) => void
 }
 
 export default function DetailPage(props: DetailPageProps) {
+
+    const {id} = useParams();
+
+    useEffect(() => {
+        props.fetchDataDetailPage(Number(id))
+    },[]);
 
     const posterImageUrl: string = "https://image.tmdb.org/t/p/w440_and_h660_face"
 
@@ -33,12 +42,12 @@ export default function DetailPage(props: DetailPageProps) {
                             ))}
                         </ul>
                         <div>
-                        <p>Runtime</p>
-                        <p>{props.movieDetails.runtime}</p>
-                        <p> Release Date</p>
-                        <p>{props.movieDetails.release_date}</p>
-                        <p>Score</p>
-                        <p>{props.movieDetails.vote_average}</p>
+                            <p>Runtime</p>
+                            <p>{props.movieDetails.runtime}</p>
+                            <p> Release Date</p>
+                            <p>{props.movieDetails.release_date}</p>
+                            <p>Score</p>
+                            <p>{props.movieDetails.vote_average}</p>
                         </div>
                     </StyledInfoSection>
                 </StyledInfoTitleSection>

@@ -78,7 +78,8 @@ public class MovieController {
     public List<Movie> getFavouriteMovies() {
         List<MovieId> movieIds = favService.getFavouriteMovies();
 
-        return movieIds.stream().map(movieId -> Objects.requireNonNull(webClient
+        return movieIds.stream().map(movieId -> Objects.requireNonNull(
+                webClient
                         .get()
                         .uri("/movie/" + movieId.getMovieId())
                         .retrieve()
