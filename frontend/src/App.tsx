@@ -6,12 +6,14 @@ import Home from "./pages/Home.tsx";
 import {Route, Routes} from "react-router-dom";
 import Newcomer from "./pages/Newcomer.tsx";
 import Popular from "./pages/Popular.tsx";
+import Favourite from "./pages/Favourite.tsx";
 import DetailPage from "./pages/DetailPage.tsx";
+import NavBar from "./components/Navbar.tsx";
+
 
 export default function App() {
 
     const [favMovies, setFavMovies] = useState<Movie[]>([])
-
     const [popularMovies, setPopularMovies] = useState<Movie[]>([])
     const [newcomerMovies, setNewcomerMovies] = useState<Movie[]>([])
     const [movieDetails, setMovieDetails] = useState<MovieDetail | undefined | null>(undefined)
@@ -19,6 +21,7 @@ export default function App() {
     useEffect(() => {
         fetchDataPopular()
         fetchDataNewcomer()
+        fetchFavMovies()
     }, []);
 
     function fetchFavMovies() {
@@ -50,16 +53,18 @@ export default function App() {
             })
     }
 
-
     return (
         <>
+            <NavBar/>
             <Routes>
                 <Route path={"/home"} element={<Home moviesPopular={popularMovies} moviesNewcomer={newcomerMovies}/>}/>
                 <Route path={"/newcomer"} element={<Newcomer newcomerMovies={newcomerMovies}/>}/>
                 <Route path={"/popular"} element={<Popular popularMovies={popularMovies}/>}/>
-                <Route path={"/:id"} element={<DetailPage movieDetails={movieDetails} fetchDataDetailPage={fetchDataDetailPage}/>}/>
+                <Route path={"/favourite"} element={<Favourite favouriteMovies={favMovies}/>}/>
+                <Route path={"/:id"}
+                       element={<DetailPage movieDetails={movieDetails} fetchDataDetailPage={fetchDataDetailPage}/>}/>
             </Routes>
-            {/*<DetailPage movieDetails={movieDetails}/>*/}
+
         </>
     )
 }

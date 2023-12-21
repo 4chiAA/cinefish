@@ -5,8 +5,6 @@ import codecracker.backend.Movie.Model.MovieId;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @RestController
 @RequestMapping("/api/favourite")
 @RequiredArgsConstructor
@@ -20,7 +18,7 @@ public class FavController {
     }
 
     @DeleteMapping("/{id}")
-    public void deleteFavouriteMovie(@PathVariable String id) {
+    public void deleteFavouriteMovie(@PathVariable int id) {
         service.deleteFavouriteMovie(id);
     }
 }

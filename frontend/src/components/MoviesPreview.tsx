@@ -6,8 +6,6 @@ type MoviesPreviewProps = {
     movies: Movie[]
     title: string
 }
-
-
 export default function MoviesPreview(props: MoviesPreviewProps) {
 
     const posterImageUrl: string = "https://image.tmdb.org/t/p/w440_and_h660_face"
@@ -15,7 +13,6 @@ export default function MoviesPreview(props: MoviesPreviewProps) {
     if (props.movies.length === 0) {
         return ("loading...")
     }
-
 
     return (
         <>
