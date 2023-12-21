@@ -1,5 +1,6 @@
 import {Movie} from "../Movie.ts";
 import styled from "styled-components";
+import FavButton from "./FavButton.tsx";
 
 type MovieListProps = {
     movies: Movie[]
@@ -22,6 +23,7 @@ export default function MovieList(props: MovieListProps) {
                     <StyledArticle key={movie.id}><img src={posterImageUrl + movie.poster_path}
                                                        alt={"Poster of " + movie.title}/>
                         <section>
+                            <FavButton title={movie.title} id={movie.id}/>
                             <p>{movie.title}</p>
                             <p>{movie.overview}</p>
                         </section>

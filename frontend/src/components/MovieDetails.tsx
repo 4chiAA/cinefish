@@ -2,6 +2,7 @@ import {Genre, MovieDetail} from "../Movie.ts";
 import styled from "styled-components";
 import {useParams} from "react-router-dom";
 import {useEffect} from "react";
+import FavButton from "./FavButton.tsx";
 
 type DetailProps = {
     movieDetails: MovieDetail | undefined | null
@@ -26,6 +27,7 @@ export default function MovieDetails(props: DetailProps) {
 
     return (
         <>
+            <FavButton title={props.movieDetails.title} id={props.movieDetails.id}/>
             <StyledContainerSection>
                 <StyledImageWrapper>
                     <StyledImage src={posterImageUrl + props.movieDetails.poster_path}
