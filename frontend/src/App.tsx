@@ -10,6 +10,7 @@ import DetailPage from "./pages/DetailPage.tsx";
 
 export default function App() {
 
+    const [favMovies, setFavMovies] = useState<Movie[]>([])
 
     const [popularMovies, setPopularMovies] = useState<Movie[]>([])
     const [newcomerMovies, setNewcomerMovies] = useState<Movie[]>([])
@@ -18,11 +19,15 @@ export default function App() {
     useEffect(() => {
         fetchDataPopular()
         fetchDataNewcomer()
-        fetchDataDetailPage(3)
     }, []);
 
+    function fetchFavMovies() {
+        axios.get("/api/movies/favourite")
+            .then(response => setFavMovies(response.data));
+    }
+
     const fetchDataPopular = () => {
-        axios.get("/movies/popular")
+        axios.get("/api/movies/popular")
             .then(response => setPopularMovies(response.data))
             .catch(error => {
                 console.error("error information: ", error)
@@ -30,30 +35,31 @@ export default function App() {
     }
 
     const fetchDataNewcomer = () => {
-        axios.get("/movies/newcomer")
+        axios.get("/api/movies/newcomer")
             .then(response => setNewcomerMovies(response.data))
             .catch(error => {
                 console.error("error information: ", error)
             })
     }
 
-    const fetchDataDetailPage = (id:number) => {
-        axios.get("movies/"+id)
+    const fetchDataDetailPage = (id: number) => {
+        axios.get("/api/movies/" + id)
             .then(response => setMovieDetails(response.data))
             .catch(error => {
                 console.error("error information: ", error)
             })
     }
 
+
     return (
         <>
-
-        <Routes>
-            <Route path={"/home"} element={<Home moviesPopular={popularMovies} moviesNewcomer={newcomerMovies}/>}/>
-            <Route path={"/newcomer"} element={<Newcomer newcomerMovies={newcomerMovies} />}/>
-            <Route path={"/popular"} element={<Popular popularMovies={popularMovies} />}/>
-        </Routes>
-            <DetailPage movieDetails={movieDetails}/>
+            <Routes>
+                <Route path={"/home"} element={<Home moviesPopular={popularMovies} moviesNewcomer={newcomerMovies}/>}/>
+                <Route path={"/newcomer"} element={<Newcomer newcomerMovies={newcomerMovies}/>}/>
+                <Route path={"/popular"} element={<Popular popularMovies={popularMovies}/>}/>
+                <Route path={"/:id"} element={<DetailPage movieDetails={movieDetails} fetchDataDetailPage={fetchDataDetailPage}/>}/>
+            </Routes>
+            {/*<DetailPage movieDetails={movieDetails}/>*/}
         </>
     )
 }

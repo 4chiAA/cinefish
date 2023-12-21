@@ -5,14 +5,14 @@ export type Genre = {
 
 export type Movie = {
     id: number,
-    original_title: string,
+    title: string,
     poster_path: string,
     overview: string
 }
 
 export type MovieDetail = {
     id: number,
-    original_title: string,
+    title: string,
     poster_path: string,
     overview: string,
     genres: Genre[],
