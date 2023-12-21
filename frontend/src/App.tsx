@@ -53,7 +53,6 @@ export default function App() {
             })
     }
 
-
     return (
         <>
             <NavBar/>
@@ -62,7 +61,8 @@ export default function App() {
                 <Route path={"/newcomer"} element={<Newcomer newcomerMovies={newcomerMovies}/>}/>
                 <Route path={"/popular"} element={<Popular popularMovies={popularMovies}/>}/>
                 <Route path={"/favourite"} element={<Favourite favouriteMovies={favMovies}/>}/>
-                <Route path={"/:id"} element={<DetailPage movieDetails={movieDetails} fetchDataDetailPage={fetchDataDetailPage} />}/>
+                <Route path={"/:id"}
+                       element={<DetailPage movieDetails={movieDetails} fetchDataDetailPage={fetchDataDetailPage}/>}/>
             </Routes>
 
         </>

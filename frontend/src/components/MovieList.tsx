@@ -23,7 +23,7 @@ export default function MovieList(props: MovieListProps) {
                     <StyledArticle key={movie.id}><img src={posterImageUrl + movie.poster_path}
                                                        alt={"Poster of " + movie.title}/>
                         <section>
-                            <FavButton title={movie.title} id={movie.id}/>
+                            <FavButton movie={movie}/>
                             <p>{movie.title}</p>
                             <p>{movie.overview}</p>
                         </section>

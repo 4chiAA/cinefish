@@ -1,17 +1,16 @@
 import axios from "axios";
+import {Movie, MovieDetail} from "../Movie.ts";
 
 export type FavButtonProps = {
-    title: string
-    id: number
+    movie?: Movie
+    movieDetail?: MovieDetail
 }
-
 
 export default function FavButton(props: FavButtonProps){
 
-
     const likeMovie = {
-        movieId: props.id,
-        title: props.title
+        title: props.movie?props.movie.title:props.movieDetail?.title,
+        movieId: props.movie?props.movie.id:props.movieDetail?.id
     }
 
     function postFavourite() {
@@ -21,11 +20,25 @@ export default function FavButton(props: FavButtonProps){
         })
         .catch(error => {
             console.error('Fehler beim POST:', error);
-            // Hier kannst du mit dem Fehler umgehen
         });
     }
 
+    function deleteFavourite() {
+        const id = props.movie?props.movie.id:props.movieDetail?.id
+        axios.delete("/api/favourite/" + id)
+
+            .then(response => {
+                console.log('Film gelöscht:', response.data);
+            })
+            .catch(error => {
+                console.error('Fehler beim Löschen des Films:', error);
+            });
+    }
+
     return (
+        <>
         <button onClick={postFavourite}>Like</button>
+        <button onClick={deleteFavourite}>Dislike</button>
+        </>
     )
 }
