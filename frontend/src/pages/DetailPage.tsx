@@ -1,5 +1,6 @@
 import MovieDetails from "../components/MovieDetails.tsx";
 import {MovieDetail} from "../Movie.ts";
+import NavBar from "../components/Navbar.tsx";
 
 type DetailsPageProps = {
     movieDetails: MovieDetail | undefined | null
@@ -8,6 +9,9 @@ type DetailsPageProps = {
 
 export default function DetailPage(props: DetailsPageProps) {
     return (
-        <MovieDetails movieDetails={props.movieDetails} fetchDataDetailPage={props.fetchDataDetailPage}/>
+        <>
+            <NavBar/>
+            <MovieDetails movieDetails={props.movieDetails} fetchDataDetailPage={props.fetchDataDetailPage}/>
+        </>
     )
 }

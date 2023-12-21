@@ -9,6 +9,8 @@ import Popular from "./pages/Popular.tsx";
 import Favourite from "./pages/Favourite.tsx";
 import DetailPage from "./pages/DetailPage.tsx";
 import NavBar from "./components/Navbar.tsx";
+import Welcome from "./pages/Welcome.tsx";
+import MoviesPreview from "./components/MoviesPreview.tsx";
 
 
 export default function App() {
@@ -55,14 +57,14 @@ export default function App() {
 
     return (
         <>
-            <NavBar/>
+
             <Routes>
+                <Route path={"/"} element={<Welcome />}/>
                 <Route path={"/home"} element={<Home moviesPopular={popularMovies} moviesNewcomer={newcomerMovies}/>}/>
                 <Route path={"/newcomer"} element={<Newcomer newcomerMovies={newcomerMovies}/>}/>
                 <Route path={"/popular"} element={<Popular popularMovies={popularMovies}/>}/>
                 <Route path={"/favourite"} element={<Favourite favouriteMovies={favMovies}/>}/>
-                <Route path={"/:id"}
-                       element={<DetailPage movieDetails={movieDetails} fetchDataDetailPage={fetchDataDetailPage}/>}/>
+                <Route path={"/:id"} element={<DetailPage movieDetails={movieDetails} fetchDataDetailPage={fetchDataDetailPage}/>}/>
             </Routes>
 
         </>
