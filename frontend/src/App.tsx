@@ -9,6 +9,7 @@ import Popular from "./pages/Popular.tsx";
 /*import DetailPage from "./pages/DetailPage.tsx";*/
 import Favourite from "./pages/Favourite.tsx";
 import DetailPage from "./pages/DetailPage.tsx";
+import NavBar from "./components/Navbar.tsx";
 
 
 export default function App() {
@@ -57,6 +58,7 @@ console.log(favMovies)
 
     return (
         <>
+            <NavBar/>
             <Routes>
                 <Route path={"/home"} element={<Home moviesPopular={popularMovies} moviesNewcomer={newcomerMovies}/>}/>
                 <Route path={"/newcomer"} element={<Newcomer newcomerMovies={newcomerMovies}/>}/>
@@ -64,7 +66,7 @@ console.log(favMovies)
                 <Route path={"/favourite"} element={<Favourite favouriteMovies={favMovies}/>}/>
                 <Route path={"/:id"} element={<DetailPage movieDetails={movieDetails} fetchDataDetailPage={fetchDataDetailPage} />}/>
             </Routes>
-            {/*<DetailPage movieDetails={movieDetails}/>*/}
+
         </>
     )
 }

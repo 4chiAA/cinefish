@@ -4,12 +4,12 @@ export default function NavBar() {
 
     return (
         <>
-            <div>
+            <section>
                 <Link to={"/home"}>Home</Link>
                 <Link to={"/popular"}>Popular</Link>
                 <Link to={"/newcomer"}>Newcomer</Link>
                 <Link to={"/favourite"}>Favourites</Link>
-            </div>
+            </section>
         </>
     )
 }
