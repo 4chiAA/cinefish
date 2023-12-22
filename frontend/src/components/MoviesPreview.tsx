@@ -32,7 +32,7 @@ export default function MoviesPreview(props: MoviesPreviewProps) {
 
 const StyledHeader = styled.h1`
   @media (min-width: 768px) {
-    margin: 0 40px 20px 40px;
+    margin: 80px 40px 20px 40px;
   }`
 
 const StyledTitleLink = styled(Link)`
