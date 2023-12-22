@@ -4,14 +4,12 @@ import styled from "styled-components";
 export default function NavBar() {
 
     return (
-        <>
             <StyledNav>
                 <Link to={"/home"}>Home</Link>
                 <Link to={"/popular"}>Popular</Link>
                 <Link to={"/newcomer"}>Newcomer</Link>
                 <Link to={"/favourite"}>Favourites</Link>
             </StyledNav>
-        </>
     )
 }
 
@@ -26,12 +24,12 @@ const StyledNav = styled.nav`
   @media (max-width: 767px) {
     position: fixed;
     bottom: 0;
-    width: 100%;
+    width: 100vw;
     left: 0;
   }
 
   @media (min-width: 768px) {
-    position: absolute;
+    position: fixed;
     top: 0;
     right: 0;
   }
